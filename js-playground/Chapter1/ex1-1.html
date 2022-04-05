@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  </head>
+  <body>
+    <h2>자바스크립트 연습문제 1</h2>
+    <!-- 1. 두 수를 입력받아 4칙연산의 결과를 표시하시오. -->
+    <script>
+      var input1 = prompt("첫 번째 숫자를 입력해주세요. : ");
+      var n1 = Number(input1);
+
+      var input2 = prompt("두 번째 숫자를 입력해주세요. : ");
+      var n2 = Number(input2);
+
+      alert(
+        "더하기 결과 -> " +
+          (input1 + input2) +
+          "\n" +
+          "빼기 결과 -> " +
+          (input1 - input2) +
+          "\n" +
+          "나누기 결과 -> " +
+          input1 / input2 +
+          "\n" +
+          "곱하기 결과 -> " +
+          input1 * input2 +
+          "\n"
+      );
+    </script>
+
+    <!-- 2. BMI를 계산하는 프로그램을 작성하시오. -->
+    <script>
+      var input1 = prompt("키를 입력해주세요. : ");
+      var n1 = Number(input1);
+
+      var input2 = prompt("몸무게를 입력해주세요. : ");
+      var n2 = Number(input2);
+
+      alert("BMI 수치는 -> " + n2 / ((n1 / 100) * (n1 / 100)) + " 입니다.");
+    </script>
+
+    <!-- 3. 섭씨를 입력받아서 화씨로 바꾸는 프로그램을 작성하시오. -->
+    <script>
+      var input1 = prompt("화씨로 변환할 섭씨를 입력해주세요. : ");
+      var n1 = input1;
+
+      alert("화씨로 변환된 값 -> " + (n1 * 1.8 + 32));
+    </script>
+
+    <!-- 4. 입력한 문자열의 길이를 알려주는 프로그램을 작성하시오.-->
+    <script>
+      var input1 = prompt("문자열을 입력해주세요. : ");
+      var n1 = input1;
+
+      alert(n1.length);
+    </script>
+  </body>
+</html>
