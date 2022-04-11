@@ -8,9 +8,9 @@ function powWithSum(num) {
 
 function mission3_1() {
   const [input1, input2] = arguments;
-  num1 = Number(input1);
-  num2 = Number(input2);
-  const sumResult = sum(num1, num2);
+  data1 = Number(input1);
+  data2 = Number(input2);
+  const sumResult = sum(data1, data2);
   const powResult = powWithSum(sumResult);
   console.log(powResult);
 }
@@ -27,23 +27,22 @@ function mission3_2() {
   console.log(removeLastCharResult);
 }
 
-function calculate(r, h) {
-  function radiusCal(r) {
-    return r * r * Math.PI;
-  }
-  const radiusCalResult = radiusCal(r);
-  const bottomArea = r * 2 * Math.PI * h;
-
-  return radiusCalResult * 2 + bottomArea;
+function calculate(r) {
+  return function (h) {
+    const rdata = r * r * Math.PI;
+    const bottomArea = r * 2 * Math.PI * h;
+    const result = rdata * 2 + bottomArea;
+    return print(r, h, result);
+  };
 }
 
-function print(num1, num2, calculateResult) {
+function print(data1, data2, calculateResult) {
   console.log(
     "반지름 " +
-      num1 +
+      data1 +
       ", " +
       "높이가 " +
-      num2 +
+      data2 +
       " 인 원통의 넓이는 " +
       calculateResult.toFixed(1) +
       " 입니다."
@@ -51,9 +50,7 @@ function print(num1, num2, calculateResult) {
 }
 function mission3_3() {
   const [input1, input2] = arguments;
-  num1 = Number(input1);
-  num2 = Number(input2);
-  const calculateResult = calculate(num1, num2);
-  const printResult = print(num1, num2, calculateResult);
-  printResult;
+  data1 = Number(input1);
+  data2 = Number(input2);
+  calculate(data1)(data2);
 }
