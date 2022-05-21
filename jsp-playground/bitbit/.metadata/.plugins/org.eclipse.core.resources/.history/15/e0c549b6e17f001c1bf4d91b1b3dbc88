@@ -1,0 +1,7 @@
+package com.test.di02;
+
+public class KiaCar implements Car{
+	public void dirve() {
+		System.out.println("기아차입니다.");
+	}
+}

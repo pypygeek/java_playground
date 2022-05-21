@@ -1,0 +1,12 @@
+package com.test.ex.dto;
+
+import java.sql.Timestamp;
+
+public class Bdto {
+	private int bId;
+	private String bName;
+	private String bTitle;
+	private String bContent;
+	Timestamp bData;
+	int bHit, bGroup, bStep, bIndent;
+}

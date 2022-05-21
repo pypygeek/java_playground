@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>글작성 페이지</title>
+</head>
+<body>
+    <form action="list.jsp" method="post">
+        <center><h1>글 작성</h1><hr>
+        <tr>작성자<td></td><td><input type="text" name="bName"></td></tr>
+        <tr>제목<td></td><td><input type="text" name="bTitle"></td></tr>
+        <tr>내용<td></td><td><input type="text" name="bContent"></td></tr>
+        <input type="submit" name="전송">
+        <input type="reset" name="취소">
+        </center>
+    </form>
+</body>
+</html>

@@ -1,0 +1,11 @@
+package com.test.di02;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		AbstractApplicationContext ctx = new GenericXmlApplicationContext("classpath:Car.xml")
+	}
+
+}

@@ -1,0 +1,12 @@
+INDEX VERSION 1.4+C:\Users\spoonz\Desktop\bitbit\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+4060214699.index
+2648388.index
+1793431303.index
+1297013223.index
+983729217.index
+840889645.index
+1854932887.index
+2062197600.index
+2186370888.index
+2294923459.index
+2714800055.index

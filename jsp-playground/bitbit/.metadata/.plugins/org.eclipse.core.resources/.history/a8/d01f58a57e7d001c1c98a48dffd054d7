@@ -1,0 +1,15 @@
+package com.test.ex;
+
+public class StudentDTO {
+	private String no;
+	private String pw;
+	private String name;
+	private String hp;
+	
+	public StudentDTO() {
+		super();
+		System.out.println("studentDTO 객체가 생성됨");
+	}
+	
+	
+}

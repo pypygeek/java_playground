@@ -1,0 +1,27 @@
+package com.test.ex.dao;
+import java.sql.*;
+import java.util.ArrayList;
+
+public class Bdao {
+	Connection dbconn;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String uid = "system";
+	String pwd = "1234";
+	public Bdao() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			dbconn = DriverManager.getConnection(url, uid, pwd);
+			System.out.println("데이터베이스 연결!!!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void write(String bName, String bTitle, String bContent) {
+		
+	}
+	
+}

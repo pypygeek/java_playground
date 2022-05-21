@@ -1,0 +1,78 @@
+package com.test.ex;
+import java.sql.*;
+
+public class StudentDAO {
+	Connection conn;
+	PreparedStatement ps;
+	ResultSet rs;
+	String url = "jdbc:oracle:thin@localhost:1521:XE";
+	String uid = "system";
+	String upw = "1234";
+	public StudentDAO() {
+		super();
+		// TODO Auto-generated constructor stub
+		try {
+			// 1. 드라이버 찾아오고 연결하기
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			conn = DriverManager.getConnection(url, uid, upw);
+			System.out.println("DB 연결 선공");
+			
+		} catch(Exception e) {
+			System.out.println("에러 발생!! = "+e.getMessage());
+		}
+	} //생성자
+	
+	public int insertStudent(StudentDTO sdto) throws SQLException {
+		String no = sdto.getName();
+		String pw = sdto.getPw();
+		String name = sdto.getName();
+		String hp = sdto.getHp();
+		int n = insertStudent(no, pw, name, hp);
+		
+		return n;
+	} // insertStudent()
+	
+	public int insertStudent(String no, String pw, String name, String hp) throws SQLException {
+		String sql = "insert into student values(?,?,?,?)";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, no);
+		ps.setString(2, pw);
+		ps.setString(3, name);
+		ps.setString(4, hp);
+		int n = ps.executeUpdate();
+		
+		ps.close();
+		conn.close();
+		
+		return n;
+	}
+
+	/*
+	public int insert(StudentDTO sdto) throws SQLException {
+		
+		String sql = "insert into student values(?,?,?,?)";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, sdto.getNo());
+		ps.setString(2, sdto.getPw());
+		ps.setString(3, sdto.getName());
+		ps.setString(4, sdto.getHp());
+		int n = ps.executeUpdate();
+		
+		ps.close();
+		conn.close();
+		
+		return n;
+	}
+	*/
+	
+	public StudentDTO[] find(String name) throws SQLException {
+		StudentDTO[] dtos = null;
+		String sql = "select * from student where name = ?";
+		ps = conn.prepareStatement(sql);
+		ps.setString(1, name);
+		rs = ps.executeQuery();
+		Vector<StudentDTO> v = Vector<studentDTO>();
+		return dtos;
+	}
+	
+}

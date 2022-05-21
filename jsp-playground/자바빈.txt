@@ -1,0 +1,61 @@
+** 자바 빈(bean) DTO
+
+ . 정보의 덩어리, 즉 데이터 저장소(데이터 객체)
+    데이터를 저장하기 위한 필드와 데이터를 컨트롤하는 getter/setter 메소드를
+    하나의 쌍으로 가지고 있는 클래스
+    
+    getter/setter 메소드는 자바빈의 필드에 데이터를 저장하고 조회하는 작업을 한다.
+    
+ 
+ [자바 빈 만들기]
+ 
+ . 패키지 선언
+  com.test.Ex.클래스이름(빈클래스명)
+ 
+ . 필드 선언
+  private String name; // 이름을 저장할 필드 선언
+  private String userid; // 아이디를 저장할 필드 선언
+  
+  
+ . getter/setter 메소드 정의 (프로퍼티 방식)
+  
+   프로퍼티: private 필드를 외부에서 접근하기 위해서 공개형 접근제어자 public
+   으로 메소드를 정의해 놓고 이를 통해서 간접적으로 필드에 접근하는 방식
+   
+   : 필드형태로 기술하고 간접적을 메소드를 호출하는 것
+       
+ 
+ [자바 빈과 관련된 액션 태그]
+ 
+ <jsp:useBean>       --> 자바 빈을 생성
+ <jsp:getProperty>   --> 자바 빈에서 정보를 얻어온다.  
+ <jsp:setProperty>   --> 자바 빈에 정보를 저장한다. 
+ 
+ 
+  <jsp:useBean> 기본 형식
+  <jsp:useBean class = "클래스 풀 네임" id = "빈 이름" [scope="범위"] />
+  
+  <jsp:getProperty> 형식
+  <jsp:getProperty name="빈이름" property="프로퍼티 이름"/>
+  :회원의 이름을 얻기 위해서 getName()호출하는 것과 같음
+  
+  <jsp:setProperty>형식
+  <jsp:setProperty name="빈이름" property="프로퍼티 이름" value="값"/>
+ 
+ [자바 빈의 영역(Scope)]
+   . 자바빈의 영역은 총 4개의 영역이 존재한다. 
+	 - page(기본값) : 현재 페이지의 범위에만 한정, 페이지 처리가 끝나면 유효하지 않는다.
+	 - request : request의 생명주기는 요청을 받고 요청처리를 완료하는 시점이다. 따라서, 빈의 Scope는
+	 			 request의 생명주기와 같다.
+	 - session : 세션의 생명주기는 설정된 유효시간이다. 따라서 빈의 스코프는 세션의 유효시간동안 이다.
+	 - application : 웹사이트가 실행되는 동안 빈의 스코프이다. 			 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  
+  
+        

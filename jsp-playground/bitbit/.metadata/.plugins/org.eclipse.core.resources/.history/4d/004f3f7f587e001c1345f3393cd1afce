@@ -1,0 +1,73 @@
+package com.test.ex.dao;
+import java.sql.*;
+import java.util.ArrayList;
+
+import com.test.ex.dto.Bdto;
+
+public class Bdao {
+	Connection dbconn;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	String url = "jdbc:oracle:thin:@localhost:1521:XE";
+	String uid = "system";
+	String pwd = "1234";
+	public Bdao() {
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			dbconn = DriverManager.getConnection(url, uid, pwd);
+			System.out.println("데이터베이스 연결!!!");
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public void write(String bName, String bTitle, String bContent) throws SQLException {
+		String sql ="insert into board(bId,bName,bTitle,bContent,bHit,bGroup,bStep,bIndent) "
+		         + "values(board_seq.nextval,?,?,?,0,board_seq.currval,0,0)";
+		
+		pstmt = dbconn.prepareStatement(sql);
+		pstmt.setString(1, bName);
+		pstmt.setString(2, bTitle);
+		pstmt.setString(3, bContent);
+		
+		int n = pstmt.executeUpdate();
+		if(n>0) {
+			System.out.println("입력 성공!");
+		} else {
+			System.out.println("입력 실패!");
+		}
+		pstmt.close();
+		dbconn.close();
+	}
+	
+	public ArrayList<Bdto> list() {
+		try {
+			ArrayList<Bdto> dtos = null;
+			
+			String sql = "select bId,bName,bTitle,bContent,bData,bHit,bGroup,bStep,bIndent from board";
+			pstmt = dbconn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				int bId = rs.getInt("bId");
+				String bName = rs.getString("bName");
+				String bTitle = rs.getString("bTitle");
+				String bContent = rs.getString("bContent");
+				Timestamp bData = rs.getTimestamp("bData");
+				int bHit = rs.getInt("bHit");
+				int bGroup = rs.getInt("gGroup");
+				int bStep = rs.getInt("bStep");
+				int bIndent = rs.getInt("bIndent");
+				
+				Bdto dto = new Bdto(bId, bName, bTitle, bContent, bData, bHit, bGroup, bStep, bIndent);
+				
+			} 
+		}catch (SQLException e) {
+				e.printStackTrace();
+			}
+		
+		return dtos; 
+	}
+	
+}
